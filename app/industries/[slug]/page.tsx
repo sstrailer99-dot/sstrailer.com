@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBanner } from "@/components/CtaBanner";
+import { ProductGrid } from "@/components/ProductGrid";
 import { getIndustry, industries, products } from "@/lib/data";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -57,43 +58,15 @@ export default async function IndustryDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-bg-white py-20 md:py-28">
+      <section className="bg-bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <h2 className="reveal display text-3xl font-extrabold text-navy md:text-4xl">
+          <h2 className="reveal display mb-10 text-center text-3xl font-extrabold text-navy md:mb-12 md:text-4xl">
             Recommended Solutions
           </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedProducts.map((product, i) => (
-              <Link
-                key={product.slug}
-                href={`/products/${product.slug}`}
-                className={[
-                  "product-tile reveal-scale group overflow-hidden border border-line bg-bg-white",
-                  ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"][i % 3],
-                ].join(" ")}
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="product-img object-cover"
-                    sizes="33vw"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="display text-2xl font-bold text-navy group-hover:text-accent">
-                    {product.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted">{product.short}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
+          <ProductGrid items={relatedProducts} columns={3} />
           <Link
             href="/industries"
-            className="reveal mt-12 inline-block text-sm font-bold uppercase tracking-[0.14em] text-navy hover:text-accent"
+            className="reveal mt-12 inline-block text-sm font-bold uppercase tracking-[0.14em] text-navy transition-colors hover:text-accent"
           >
             ← All industries
           </Link>

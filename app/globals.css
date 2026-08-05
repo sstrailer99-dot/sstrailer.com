@@ -139,62 +139,109 @@ body {
   transform: none;
   clip-path: none;
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html.js-ready .reveal:not(.is-visible) {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(22px);
 }
 
 html.js-ready .reveal-left:not(.is-visible) {
   opacity: 0;
-  transform: translateX(-18px);
+  transform: translateX(-22px);
 }
 
 html.js-ready .reveal-scale:not(.is-visible) {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(16px);
 }
 
 html.js-ready .reveal-image:not(.is-visible) {
   opacity: 0;
 }
 
+html.js-ready .reveal-image:not(.is-visible) > img,
+html.js-ready .reveal-image:not(.is-visible) .reveal-img {
+  transform: scale(1.04);
+}
+
+.reveal-image > img,
+.reveal-image .reveal-img {
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-image.is-visible > img,
+.reveal-image.is-visible .reveal-img {
+  transform: scale(1);
+}
+
 .reveal-delay-1 {
-  transition-delay: 0.05s;
+  transition-delay: 0.08s;
 }
 .reveal-delay-2 {
-  transition-delay: 0.1s;
+  transition-delay: 0.16s;
 }
 .reveal-delay-3 {
-  transition-delay: 0.15s;
+  transition-delay: 0.24s;
 }
 .reveal-delay-4 {
-  transition-delay: 0.2s;
+  transition-delay: 0.32s;
 }
 
 .page-enter {
-  animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .page-enter-d1 {
-  animation-delay: 0.06s;
+  animation-delay: 0.08s;
 }
 .page-enter-d2 {
-  animation-delay: 0.12s;
+  animation-delay: 0.16s;
 }
 .page-enter-d3 {
-  animation-delay: 0.18s;
+  animation-delay: 0.24s;
 }
 .page-enter-d4 {
-  animation-delay: 0.24s;
+  animation-delay: 0.32s;
+}
+
+/* Banner headline — UMI-style line reveal */
+.banner-line {
+  display: block;
+  overflow: hidden;
+}
+
+.banner-line > span {
+  display: block;
+  animation: bannerSlide 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.banner-line-d1 > span {
+  animation-delay: 0.12s;
+}
+.banner-line-d2 > span {
+  animation-delay: 0.28s;
+}
+.banner-line-d3 > span {
+  animation-delay: 0.44s;
+}
+
+@keyframes bannerSlide {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes kenBurns {
   from {
-    transform: scale(1.1);
+    transform: scale(1.14);
   }
   to {
     transform: scale(1);
@@ -240,7 +287,27 @@ html.js-ready .reveal-image:not(.is-visible) {
 }
 
 .anim-ken {
-  animation: kenBurns 16s ease-out forwards;
+  animation: kenBurns 22s ease-out forwards;
+}
+
+.hero-zoom {
+  animation: kenBurns 24s ease-out forwards;
+}
+
+/* Hero slideshow: slow zoom while slide is active, then crossfade */
+@keyframes heroSlideZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.hero-slide-zoom {
+  transform-origin: center center;
+  animation: heroSlideZoom 6.5s linear forwards;
+  will-change: transform;
 }
 
 .anim-fade-up {
@@ -266,23 +333,178 @@ html.js-ready .reveal-image:not(.is-visible) {
   animation: slideInLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.product-tile {
-  transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s ease;
+/* Seamless product / industry tiles — blend, no boxes */
+.product-band {
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    #0a2342 8%,
+    #061628 50%,
+    #0a2342 92%,
+    var(--bg) 100%
+  );
 }
 
-.product-tile:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(10, 35, 66, 0.14);
+.product-tile {
+  display: block;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
 }
 
 .product-tile .product-img {
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  opacity: 0.92;
 }
 
 .product-tile:hover .product-img {
   transform: scale(1.06);
+  opacity: 1;
+}
+
+.product-tile .tile-veil {
+  background:
+    linear-gradient(
+      to top,
+      rgba(6, 22, 40, 0.92) 0%,
+      rgba(6, 22, 40, 0.35) 42%,
+      rgba(6, 22, 40, 0.15) 100%
+    );
+  transition: opacity 0.4s ease;
+}
+
+.product-tile:hover .tile-veil {
+  background:
+    linear-gradient(
+      to top,
+      rgba(6, 22, 40, 0.96) 0%,
+      rgba(6, 22, 40, 0.45) 48%,
+      rgba(6, 22, 40, 0.2) 100%
+    );
+}
+
+.product-tile .tile-cta {
+  opacity: 0.55;
+  transform: translateY(4px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-tile:hover .tile-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Catalog tiles — UMI-style floating products on white */
+.catalog-tile {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.catalog-tile .catalog-img {
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.18));
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s ease;
+}
+
+.catalog-tile:hover .catalog-img {
+  transform: scale(1.03) translateY(-6px);
+  filter: drop-shadow(0 28px 34px rgba(0, 0, 0, 0.22));
+}
+
+.catalog-btn {
+  background: #e8e8e8;
+  color: #1a1a1a;
+  border-radius: 3px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.catalog-tile:hover .catalog-btn,
+a.catalog-btn:hover {
+  background: #dcdcdc;
+  color: #000;
+}
+
+.filter-chip {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.4rem 0.15rem;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.filter-chip:hover {
+  color: var(--navy);
+}
+
+.filter-chip.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.product-band .filter-chip {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.product-band .filter-chip:hover {
+  color: #fff;
+}
+
+.product-band .filter-chip.is-active {
+  color: var(--accent-hot);
+  border-bottom-color: var(--accent-hot);
+}
+
+.stat-accent::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2px;
+  margin: 0.75rem auto 0;
+  background: var(--accent);
+  transform: scaleX(0.55);
+  opacity: 0.85;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible .stat-accent::after {
+  transform: scaleX(1);
+}
+
+.footer-link {
+  position: relative;
+  display: inline-block;
+  transition: color 0.25s ease;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav-link {
@@ -302,9 +524,14 @@ html.js-ready .reveal-image:not(.is-visible) {
   transition: transform 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.nav-over-hero .nav-link::after {
+  background: #fff;
 }
 
 .field {
@@ -336,9 +563,14 @@ textarea.field {
   resize: vertical;
 }
 
-img {
+/* Don't force height:auto on Next.js fill images (breaks hero/slider) */
+img:not([data-nimg]) {
   max-width: 100%;
   height: auto;
+}
+
+img[data-nimg="fill"] {
+  max-width: none;
 }
 
 .btn-primary {
@@ -354,13 +586,15 @@ img {
   padding: 0.95rem 1.75rem;
   min-height: 44px;
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
 }
 
 .btn-primary:hover {
   background: var(--accent-hot);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(200, 16, 46, 0.28);
 }
 
 .btn-outline {
@@ -376,8 +610,9 @@ img {
   padding: 0.9rem 1.75rem;
   min-height: 44px;
   transition:
-    background 0.25s ease,
-    color 0.25s ease;
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Mobile sticky contact bar */
@@ -403,6 +638,7 @@ img {
 .btn-outline:hover {
   background: #fff;
   color: var(--navy);
+  transform: translateY(-2px);
 }
 
 .step-num {
@@ -427,11 +663,19 @@ img {
   .reveal-left,
   .reveal-scale,
   .reveal-image,
-  .page-enter {
+  .page-enter,
+  .anim-ken,
+  .hero-zoom,
+  .hero-slide-zoom,
+  .banner-line > span {
     opacity: 1;
     transform: none;
     clip-path: none;
     animation: none;
+  }
+
+  .catalog-tile .catalog-img {
+    filter: drop-shadow(0 10px 12px rgba(10, 35, 66, 0.12));
   }
 }
 

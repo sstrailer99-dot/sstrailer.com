@@ -19,7 +19,7 @@ export default function IndustriesPage() {
         image="/images/construction.jpg"
       />
 
-      <section className="bg-bg-white py-20 md:py-28">
+      <section className="bg-bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <IndustryGrid />
         </div>

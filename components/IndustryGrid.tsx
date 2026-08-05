@@ -11,39 +11,33 @@ export function IndustryGrid({ limit, items = industries }: IndustryGridProps) {
   const list = limit ? items.slice(0, limit) : items;
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+    <div className="grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-12 sm:gap-y-16">
       {list.map((item, i) => (
         <Link
           key={item.slug}
           href={`/industries/${item.slug}`}
           className={[
-            "reveal-scale group relative block overflow-hidden border border-line",
+            "catalog-tile reveal-scale group flex flex-col items-center text-center",
             ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"][i % 3],
           ].join(" ")}
         >
-          <div className="relative aspect-[16/10] overflow-hidden sm:aspect-[16/11]">
+          <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden">
             <Image
               src={item.image}
               alt={item.title}
               fill
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               quality={75}
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy/55 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-              <h3 className="display text-2xl font-bold text-white sm:text-3xl">
-                {item.title}
-              </h3>
-              <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/75">
-                {item.short}
-              </p>
-              <span className="mt-3 inline-block text-xs font-bold uppercase tracking-[0.14em] text-accent-hot sm:mt-4">
-                Explore sector →
-              </span>
-            </div>
           </div>
+          <h3 className="text-[1.05rem] font-medium tracking-wide text-[#2c2c2c] transition-colors group-hover:text-accent sm:text-lg">
+            {item.title}
+          </h3>
+          <span className="catalog-btn mt-5 inline-flex min-h-[42px] items-center justify-center px-7 text-[0.95rem] font-medium text-[#1a1a1a]">
+            View More
+          </span>
         </Link>
       ))}
     </div>

@@ -33,13 +33,13 @@ export default async function ProductDetailPage({ params }: Props) {
     <>
       <section className="bg-bg pt-[6.5rem] sm:pt-[7.5rem] md:pt-[8.5rem]">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:gap-10 sm:px-5 sm:py-14 md:grid-cols-2 md:gap-14 md:px-8 md:py-20">
-          <div className="page-enter relative aspect-[16/11] overflow-hidden border border-line bg-white sm:aspect-[4/3]">
+          <div className="page-enter relative aspect-[16/11] sm:aspect-[4/3]">
             <Image
               src={product.image}
               alt={product.title}
               fill
               priority
-              className="object-contain p-3"
+              className="object-contain p-2"
               sizes="(max-width: 768px) 100vw, 50vw"
               quality={80}
             />
@@ -83,22 +83,22 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-sky py-12 sm:py-16 md:py-20">
+      <section className="bg-bg py-12 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
           <h2 className="reveal display text-2xl font-extrabold text-navy sm:text-3xl md:text-4xl">
             Gallery
           </h2>
-          <div className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5">
+          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2">
             {product.gallery.map((src, i) => (
               <div
                 key={`${src}-${i}`}
-                className="relative aspect-[16/10] overflow-hidden bg-white"
+                className="relative aspect-[16/10] overflow-hidden bg-bg"
               >
                 <Image
                   src={src}
                   alt={`${product.title} reference ${i + 1}`}
                   fill
-                  className="object-contain p-2"
+                  className="object-contain p-4"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={75}
                 />
@@ -108,12 +108,12 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-bg-white py-14 sm:py-20 md:py-28">
+      <section className="bg-bg-white py-14 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
-          <h2 className="reveal display mb-8 text-2xl font-extrabold text-navy sm:mb-10 sm:text-3xl md:text-4xl">
+          <h2 className="reveal display mb-10 text-center text-2xl font-extrabold text-navy sm:mb-12 sm:text-3xl md:text-4xl">
             Related Products
           </h2>
-          <ProductGrid items={related} />
+          <ProductGrid items={related} columns={4} />
         </div>
       </section>
 

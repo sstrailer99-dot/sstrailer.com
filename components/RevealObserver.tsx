@@ -18,7 +18,7 @@ export function RevealObserver() {
           }
         });
       },
-      { threshold: 0.05, rootMargin: "120px 0px 80px 0px" },
+      { threshold: 0.08, rootMargin: "100px 0px 60px 0px" },
     );
 
     const reveal = (node: Element) => {
@@ -26,7 +26,7 @@ export function RevealObserver() {
 
       const rect = node.getBoundingClientRect();
       const inView =
-        rect.top < window.innerHeight * 1.05 && rect.bottom > -40;
+        rect.top < window.innerHeight * 1.02 && rect.bottom > -20;
 
       if (inView) {
         node.classList.add("is-visible");
@@ -41,7 +41,7 @@ export function RevealObserver() {
 
     scan();
     const raf = requestAnimationFrame(scan);
-    const timeout = window.setTimeout(scan, 100);
+    const timeout = window.setTimeout(scan, 80);
 
     // Catch tiles added on filter/query changes (pathname stays the same)
     const mo = new MutationObserver((mutations) => {

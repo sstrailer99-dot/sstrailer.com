@@ -26,41 +26,39 @@ export function Process({ showCta = false }: ProcessProps) {
   return (
     <section className="bg-navy py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="reveal text-xs font-bold uppercase tracking-[0.25em] text-accent-hot">
-              How It Works
-            </p>
-            <h2 className="reveal reveal-delay-1 display mt-2 text-4xl font-extrabold text-white md:text-5xl">
-              3 Easy Steps
-            </h2>
-          </div>
+        <div className="mb-14 flex flex-col gap-4 text-center md:mb-16">
+          <p className="reveal text-xs font-bold uppercase tracking-[0.25em] text-accent-hot">
+            How It Works
+          </p>
+          <h2 className="reveal reveal-delay-1 display text-4xl font-extrabold text-white md:text-5xl">
+            3 Easy Steps
+          </h2>
           {showCta && (
             <Link
               href="/process"
-              className="reveal reveal-delay-2 text-sm font-bold uppercase tracking-[0.14em] text-white/80 transition-colors hover:text-accent-hot"
+              className="reveal reveal-delay-2 mx-auto text-sm font-bold uppercase tracking-[0.14em] text-white/70 transition-colors hover:text-accent-hot"
             >
               Full process →
             </Link>
           )}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-3 md:gap-12">
           {steps.map((step, i) => (
             <article
               key={step.num}
               className={[
-                "step-card reveal border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:bg-white/10",
+                "reveal text-center md:text-left",
                 ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"][i],
               ].join(" ")}
             >
-              <p className="step-num display text-5xl font-extrabold text-accent-hot">
+              <p className="display text-5xl font-extrabold text-accent-hot/90">
                 {step.num}
               </p>
               <h3 className="display mt-4 text-3xl font-bold text-white">
                 {step.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-white/65 md:text-base">
                 {step.desc}
               </p>
             </article>

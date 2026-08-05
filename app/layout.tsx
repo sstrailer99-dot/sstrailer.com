@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
+import { FloatingContact } from "@/components/FloatingContact";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { Nav } from "@/components/Nav";
@@ -60,6 +61,7 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingContact />
         <MobileCallBar />
       </body>
     </html>

@@ -23,16 +23,19 @@ export default function GalleryPage() {
         ctaLabel="Enquire Now"
       />
 
-      <section className="bg-bg-white py-14 sm:py-20 md:py-28">
+      <section className="bg-bg-white py-14 sm:py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
-          <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
-            {galleryItems.map((item) => (
+          <div className="grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-12 sm:gap-y-16">
+            {galleryItems.map((item, i) => (
               <Link
                 key={`${item.src}-${item.title}`}
                 href={item.href}
-                className="group mb-5 block break-inside-avoid overflow-hidden bg-sky"
+                className={[
+                  "catalog-tile reveal-scale group flex flex-col items-center text-center",
+                  ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"][i % 3],
+                ].join(" ")}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden">
                   <Image
                     src={item.src}
                     alt={item.alt}
@@ -42,16 +45,13 @@ export default function GalleryPage() {
                     quality={75}
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
-                  <div className="absolute inset-x-0 bottom-0 p-4">
-                    <p className="display text-lg font-bold text-white">
-                      {item.title}
-                    </p>
-                    <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/70">
-                      View details →
-                    </p>
-                  </div>
                 </div>
+                <h3 className="text-[1.05rem] font-medium tracking-wide text-[#2c2c2c] transition-colors group-hover:text-accent sm:text-lg">
+                  {item.title}
+                </h3>
+                <span className="catalog-btn mt-5 inline-flex min-h-[42px] items-center justify-center px-7 text-[0.95rem] font-medium text-[#1a1a1a]">
+                  View More
+                </span>
               </Link>
             ))}
           </div>

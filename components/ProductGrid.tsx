@@ -5,43 +5,49 @@ import { products, type Product } from "@/lib/data";
 type ProductGridProps = {
   limit?: number;
   items?: Product[];
+  columns?: 3 | 4;
 };
 
-export function ProductGrid({ limit, items = products }: ProductGridProps) {
+export function ProductGrid({
+  limit,
+  items = products,
+  columns = 4,
+}: ProductGridProps) {
   const list = limit ? items.slice(0, limit) : items;
+  const gridClass =
+    columns === 3
+      ? "grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-12 sm:gap-y-20"
+      : "grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-x-12 sm:gap-y-20";
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
+    <div className={gridClass}>
       {list.map((product, i) => (
         <Link
           key={product.slug}
           href={`/products/${product.slug}`}
-          className="product-tile group block overflow-hidden border border-line bg-bg-white"
+          className={[
+            "catalog-tile reveal-scale group flex flex-col items-center text-center",
+            ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"][
+              i % 4
+            ],
+          ].join(" ")}
         >
-          <div className="relative aspect-[16/11] overflow-hidden bg-[#f3f6f9] sm:aspect-[4/3]">
+          <div className="relative mb-6 aspect-[5/3] w-full max-w-[320px] sm:mb-7 sm:max-w-none">
             <Image
               src={product.image}
               alt={product.title}
               fill
-              className="product-img object-contain p-3"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              quality={75}
+              className="catalog-img object-contain object-center"
+              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 40vw, 22vw"
+              quality={85}
             />
-            <span className="absolute bottom-3 left-3 rounded-sm bg-accent px-2 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-white shadow-sm">
-              View
-            </span>
           </div>
-          <div className="p-4 sm:p-5">
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-accent">
-              {product.capacity}
-            </p>
-            <h3 className="display mt-2 text-[1.35rem] font-bold leading-tight text-navy transition-colors group-hover:text-accent sm:text-2xl">
-              {product.title}
-            </h3>
-            <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
-              {product.short}
-            </p>
-          </div>
+          <h3 className="text-[1.05rem] font-medium tracking-wide text-[#2c2c2c] transition-colors group-hover:text-accent sm:text-lg">
+            {product.title}
+          </h3>
+          <span className="catalog-btn mt-5 inline-flex min-h-[42px] items-center justify-center px-7 text-[0.95rem] font-medium text-[#1a1a1a]">
+            View More
+          </span>
         </Link>
       ))}
     </div>

@@ -35,16 +35,12 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         ctaLabel="Enquire Now"
       />
 
-      <section className="bg-bg-white py-14 sm:py-20 md:py-28">
+      <section className="bg-bg-white py-14 sm:py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
-          <div className="mb-8 flex flex-wrap gap-2">
+          <div className="mb-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:mb-16">
             <Link
               href="/products"
-              className={`px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] transition-colors ${
-                !type
-                  ? "bg-navy text-white"
-                  : "border border-line text-navy-mid hover:border-navy hover:text-navy"
-              }`}
+              className={`filter-chip ${!type ? "is-active" : ""}`}
             >
               All
             </Link>
@@ -55,11 +51,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] transition-colors ${
-                    active
-                      ? "bg-navy text-white"
-                      : "border border-line text-navy-mid hover:border-navy hover:text-navy"
-                  }`}
+                  className={`filter-chip ${active ? "is-active" : ""}`}
                 >
                   {item.label}
                 </Link>

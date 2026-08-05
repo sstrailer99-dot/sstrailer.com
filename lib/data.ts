@@ -398,13 +398,13 @@ export const galleryItems = [
     src: "/images/manufacturing.jpg",
     alt: "Manufacturing floor",
     title: "Manufacturing",
-    href: "/process",
+    href: "/about",
   },
   {
     src: "/images/fabrication.jpg",
     alt: "Fabrication work",
     title: "Fabrication",
-    href: "/process",
+    href: "/about",
   },
 ];
 
@@ -424,6 +424,8 @@ export const company = {
   ],
   phone: "+971 54 512 9979",
   phoneHref: "tel:+971545129979",
+  email: "info@sstrailers.ae",
+  emailHref: "mailto:info@sstrailers.ae",
   whatsapp: "https://wa.me/971545129979",
   address:
     "Office 43-44, Near Al Town Roundabout, Industrial Area 2, Ras Al Khor, Dubai, UAE",
