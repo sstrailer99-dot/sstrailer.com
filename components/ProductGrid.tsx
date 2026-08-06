@@ -20,19 +20,14 @@ export function ProductGrid({
       : "grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-x-12 sm:gap-y-20";
 
   return (
-    <div className={gridClass}>
-      {list.map((product, i) => (
+    <div className={`${gridClass} pb-4`}>
+      {list.map((product) => (
         <Link
           key={product.slug}
           href={`/products/${product.slug}`}
-          className={[
-            "catalog-tile reveal-scale group flex flex-col items-center text-center",
-            ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"][
-              i % 4
-            ],
-          ].join(" ")}
+          className="catalog-tile group flex flex-col items-center text-center"
         >
-          <div className="relative mb-6 aspect-[5/3] w-full max-w-[320px] sm:mb-7 sm:max-w-none">
+          <div className="relative mb-6 aspect-[5/3] w-full max-w-[320px] overflow-visible sm:mb-7 sm:max-w-none">
             <Image
               src={product.image}
               alt={product.title}

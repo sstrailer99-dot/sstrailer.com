@@ -416,6 +416,20 @@ export const company = {
   tagline: "Strength That Moves Your Business",
   description:
     "UAE’s trusted SS trailer & truck body builder — custom food-grade tankers, reefers, flatbeds & tippers. 304/316L stainless, CNC-fabricated, ADR-certified. Fast delivery across Dubai, Abu Dhabi & GCC.",
+  about: {
+    intro:
+      "SS Trailers is a Dubai-based trailer and truck body manufacturer serving transport, construction, fuel distribution and industrial fleets across the UAE and GCC. From our workshop in Ras Al Khor Industrial Area 2, we design, fabricate and deliver custom-built trailers that meet real operating conditions on Gulf roads and job sites.",
+    story:
+      "With more than a decade of hands-on experience in steel fabrication and heavy transport equipment, our team combines practical engineering with disciplined workshop standards. Every build — from flatbeds and curtain sides to tankers, low beds and specialised chassis — is planned around capacity, durability and ease of maintenance so fleets stay productive longer.",
+    range:
+      "Our manufacturing range includes flatbed, heavy duty, side body, sand, A-frame, extendable, low bed, box, side curtain, flexy, connector and tanker trailers. Units can be specified with reinforced beams, safety lighting, reflective markings and finishes suited to UAE and GCC regulations.",
+    commitment:
+      "We work closely with fleet owners, logistics companies and contractors from enquiry through quotation, fabrication and delivery. Clear communication, honest timelines and consistent build quality are how we earn long-term trust — Strength That Moves Your Business.",
+  },
+  vision:
+    "To be the preferred trailer and truck body manufacturer in the UAE and GCC — recognised for strength, reliability and practical innovation that keeps businesses moving.",
+  mission:
+    "To design and manufacture durable, specification-driven trailers and truck bodies using quality materials, skilled fabrication and on-time delivery — supporting customers with solutions built for real fleet demands across Dubai, Abu Dhabi and the wider region.",
   highlights: [
     "304 / 316L stainless",
     "CNC-fabricated",
@@ -430,6 +444,11 @@ export const company = {
   address:
     "Office 43-44, Near Al Town Roundabout, Industrial Area 2, Ras Al Khor, Dubai, UAE",
   established: "2024",
+  stats: {
+    happyClients: "5000+",
+    projectsCompleted: "6000+",
+    yearsExperience: "10+",
+  },
   founder: {
     name: "Shahid",
     title: "Founder",

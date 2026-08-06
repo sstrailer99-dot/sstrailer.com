@@ -1,8 +1,9 @@
+import { company } from "@/lib/data";
+
 const stats = [
-  { value: "304/316L", label: "Stainless Steel" },
-  { value: "CNC", label: "Fabrication" },
-  { value: "ADR", label: "Certified Builds" },
-  { value: "GCC", label: "Fast Delivery" },
+  { value: company.stats.happyClients, label: "Happy Customers" },
+  { value: company.stats.projectsCompleted, label: "Projects Completed" },
+  { value: company.stats.yearsExperience, label: "Years of Experience" },
 ];
 
 export function Stats() {
@@ -17,23 +18,21 @@ export function Stats() {
             Built for reliability
           </h2>
           <p className="reveal reveal-delay-2 mt-4 text-sm leading-relaxed text-muted md:text-base">
-            Quality fabrication focused on continuous improvement for transport,
-            construction and industrial fleets.
+            Trusted by fleets across Dubai and the GCC for quality trailer
+            manufacturing and on-time delivery.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:mt-16 md:grid-cols-4 md:gap-8">
+        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 md:mt-16 md:gap-8">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
               className={[
                 "reveal text-center",
-                ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"][
-                  i
-                ],
+                ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"][i],
               ].join(" ")}
             >
-              <p className="stat-accent display text-3xl font-extrabold text-navy sm:text-4xl md:text-5xl">
+              <p className="stat-accent display text-4xl font-extrabold text-navy sm:text-5xl md:text-6xl">
                 {stat.value}
               </p>
               <p className="mt-3 text-xs font-bold uppercase tracking-[0.2em] text-muted">

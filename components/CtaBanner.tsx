@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function CtaBanner() {
   return (
-    <section className="relative overflow-hidden bg-navy-deep py-14 sm:py-16 md:py-20">
+    <section className="relative z-0 clear-both overflow-hidden bg-navy-deep py-14 sm:py-16 md:py-20">
       <div className="pointer-events-none absolute -right-20 top-0 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
       <div className="pointer-events-none absolute -left-16 bottom-0 h-48 w-48 rounded-full bg-white/5 blur-2xl" />
       <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-5 md:flex-row md:items-center md:gap-10 md:px-8">

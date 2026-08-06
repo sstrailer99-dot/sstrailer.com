@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Certificates } from "@/components/Certificates";
 import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
 import { company } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -12,31 +11,27 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="About the Company"
-        title="UAE’s trusted SS trailer & truck body builder"
-        subtitle={company.description}
-        image="/images/manufacturing.jpg"
-      />
-
-      <section className="bg-bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
+      <section className="bg-bg-white pt-[6.5rem] sm:pt-[7.5rem] md:pt-[8rem]">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:py-20 md:px-8 md:py-24">
           <p className="reveal text-xs font-bold uppercase tracking-[0.25em] text-accent">
             Who We Are
           </p>
-          <h2 className="reveal reveal-delay-1 display mt-2 text-4xl font-extrabold text-navy md:text-5xl">
+          <h1 className="reveal reveal-delay-1 display mt-2 text-4xl font-extrabold text-navy md:text-5xl">
             {company.shortName}
-          </h2>
+          </h1>
           <p className="reveal reveal-delay-2 mt-5 text-base leading-relaxed text-muted md:text-lg">
-            {company.description}
+            {company.about.intro}
           </p>
-          <p className="reveal reveal-delay-3 mt-4 text-base leading-relaxed text-muted">
-            From flatbed, heavy duty, side body, sand, A-frame and extendable
-            builds to low bed, box, curtain, flexy, connector and tankers —
-            every unit is fabricated to specification at our Ras Al Khor
-            workshop in Dubai.
+          <p className="reveal reveal-delay-3 mt-4 text-base leading-relaxed text-muted md:text-lg">
+            {company.about.story}
           </p>
-          <ul className="reveal reveal-delay-4 mx-auto mt-8 grid max-w-xl gap-2 text-left sm:grid-cols-2">
+          <p className="reveal reveal-delay-3 mt-4 text-base leading-relaxed text-muted md:text-lg">
+            {company.about.range}
+          </p>
+          <p className="reveal reveal-delay-4 mt-4 text-base leading-relaxed text-muted md:text-lg">
+            {company.about.commitment}
+          </p>
+          <ul className="reveal reveal-delay-4 mx-auto mt-10 grid max-w-xl gap-2.5 text-left sm:grid-cols-2">
             {company.highlights.map((item) => (
               <li
                 key={item}
@@ -47,6 +42,33 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="bg-bg py-16 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-16 md:px-8">
+          <div className="reveal text-center md:text-left">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">
+              Our Vision
+            </p>
+            <h2 className="display mt-3 text-3xl font-extrabold text-navy md:text-4xl">
+              Where we are headed
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted md:text-lg">
+              {company.vision}
+            </p>
+          </div>
+          <div className="reveal reveal-delay-2 text-center md:text-left">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">
+              Our Mission
+            </p>
+            <h2 className="display mt-3 text-3xl font-extrabold text-navy md:text-4xl">
+              What we deliver
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted md:text-lg">
+              {company.mission}
+            </p>
+          </div>
         </div>
       </section>
 

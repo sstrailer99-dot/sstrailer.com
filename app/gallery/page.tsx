@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
 import { galleryItems } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -14,26 +13,23 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Visual Showcase"
-        title="Gallery"
-        subtitle="A look at trailers, tankers and truck body builds from our Dubai workshop — plus the fabrication environments behind every SMS Auto unit."
-        image="/images/manufacturing.jpg"
-        ctaHref="/contact"
-        ctaLabel="Enquire Now"
-      />
+      <section className="bg-bg-white pt-[6.5rem] sm:pt-[7.5rem] md:pt-[8rem]">
+        <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 text-center sm:px-5 sm:pb-12 sm:pt-10 md:px-8">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">
+            Visual Showcase
+          </p>
+          <h1 className="display mt-3 text-4xl font-extrabold text-navy md:text-5xl">
+            Gallery
+          </h1>
+        </div>
 
-      <section className="bg-bg-white py-14 sm:py-20 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+        <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-5 sm:pb-28 md:px-8 md:pb-32">
           <div className="grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-12 sm:gap-y-16">
-            {galleryItems.map((item, i) => (
+            {galleryItems.map((item) => (
               <Link
                 key={`${item.src}-${item.title}`}
                 href={item.href}
-                className={[
-                  "catalog-tile reveal-scale group flex flex-col items-center text-center",
-                  ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3"][i % 3],
-                ].join(" ")}
+                className="catalog-tile group flex flex-col items-center text-center"
               >
                 <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden">
                   <Image
