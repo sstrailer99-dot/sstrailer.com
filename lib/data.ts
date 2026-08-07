@@ -269,9 +269,9 @@ export const products: Product[] = [
       "Desert-ready configuration",
       "Safety markings & lighting",
     ],
-    image: "/products/sand-trailer-thumb-v2.png",
+    image: "/products/sand-trailer-thumb-v3.png",
     gallery: [
-      "/products/sand-trailer-thumb-v2.png",
+      "/products/sand-trailer-thumb-v3.png",
       "/gallery/sand-trailer/sand-02.png",
       "/gallery/sand-trailer/sand-03.png",
       "/gallery/sand-trailer/sand-04.png",
@@ -294,9 +294,9 @@ export const products: Product[] = [
       "Reinforced chassis",
       "Safety lighting & reflectors",
     ],
-    image: "/products/a-frame-trailer-thumb.png",
+    image: "/products/a-frame-trailer-thumb-v2.png",
     gallery: [
-      "/products/a-frame-trailer-thumb.png",
+      "/products/a-frame-trailer-thumb-v2.png",
       "/gallery/a-frame-trailer/aframe-01.png",
       "/gallery/a-frame-trailer/aframe-02.png",
       "/gallery/a-frame-trailer/aframe-03.png",
@@ -499,7 +499,7 @@ export const company = {
   name: "Shahid Mehmood Salamat Auto General Repairing Co LLC",
   shortName: "SS Trailers",
   slogan: "Strength That Moves Your Business",
-  logo: "/brand/logo-nav.png",
+  logo: "/brand/logo-nav-v2.png",
   tagline: "Strength That Moves Your Business",
   description:
     "UAE’s trusted SS trailer & truck body builder — custom food-grade tankers, reefers, flatbeds & tippers. 304/316L stainless, CNC-fabricated, ADR-certified. Fast delivery across Dubai, Abu Dhabi & GCC.",
