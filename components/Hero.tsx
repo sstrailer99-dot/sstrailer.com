@@ -8,7 +8,7 @@ import { company } from "@/lib/data";
 const slides = [
   {
     src: "/images/banner-01.png",
-    alt: "SS Trailers Dubai side body trailer with truck — custom trailer manufacturer in Ras Al Khor UAE",
+    alt: "SS Trailers Dubai trailer with truck — custom trailer manufacturer in Ras Al Khor UAE",
   },
   {
     src: "/images/banner-02.png",
