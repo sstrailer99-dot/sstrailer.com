@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { FloatingContact } from "@/components/FloatingContact";
 import { Footer } from "@/components/Footer";
@@ -62,6 +63,7 @@ export default function RootLayout({
       className={`h-full ${display.variable} ${body.variable}`}
     >
       <body className="flex min-h-full flex-col pb-16 antialiased md:pb-0">
+        <GoogleAnalytics />
         <OrganizationJsonLd />
         <RevealObserver />
         <Nav />
