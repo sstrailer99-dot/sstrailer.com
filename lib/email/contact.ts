@@ -8,7 +8,7 @@ export type ContactPayload = {
   message: string;
 };
 
-const DEFAULT_FROM_EMAIL = "website@sstrailers.net";
+const DEFAULT_FROM_EMAIL = "onboarding@resend.dev";
 
 export function isContactEmailConfigured() {
   return Boolean(process.env.RESEND_API_KEY?.trim());
@@ -29,22 +29,37 @@ export function getResendFromEmail() {
   return raw;
 }
 
-/** Inbox "From" shows the visitor name — not info@sstrailers.net. */
-export function buildEnquiryFrom(payload: ContactPayload) {
+/** Keep From simple — Resend rejects complex display names with @ or parentheses. */
+export function buildEnquiryFrom() {
   const fromEmail = getResendFromEmail();
-  const visitor = payload.email
-    ? `${payload.name} (${payload.email})`
-    : `${payload.name} — ${payload.phone}`;
-
-  return `${visitor} via SS Trailers Website <${fromEmail}>`;
+  return `SS Trailers Website <${fromEmail}>`;
 }
 
-/** Auto-replies to customers come from your business address. */
 export function buildCustomerReplyFrom() {
-  const replyFrom = process.env.RESEND_REPLY_FROM?.trim();
-  if (replyFrom) return replyFrom;
+  const fromEmail = getResendFromEmail();
+  return `SS Trailers <${fromEmail}>`;
+}
 
-  return `SS Trailers <${getContactRecipient()}>`;
+export function mapResendError(message: string) {
+  const lower = message.toLowerCase();
+
+  if (lower.includes("only send testing emails") || lower.includes("verify a domain")) {
+    return "Resend is in test mode. Verify sstrailers.net at resend.com/domains, then set RESEND_FROM=website@sstrailers.net.";
+  }
+
+  if (lower.includes("not verified") || lower.includes("domain mismatch")) {
+    return "Your domain is not verified in Resend yet. Add DNS records for sstrailers.net in the Resend dashboard.";
+  }
+
+  if (lower.includes("invalid `from`") || lower.includes("invalid from")) {
+    return "Sender address is invalid. Set RESEND_FROM=website@sstrailers.net after domain verification.";
+  }
+
+  if (lower.includes("api key") || lower.includes("unauthorized")) {
+    return "Email API key is invalid. Check RESEND_API_KEY in server environment variables.";
+  }
+
+  return "Could not send your message. Please call or WhatsApp us directly.";
 }
 
 function escapeHtml(value: string) {
@@ -89,6 +104,11 @@ function buildEnquiryText(payload: ContactPayload) {
     .join("\n");
 }
 
+function buildSubject(payload: ContactPayload) {
+  const companyPart = payload.company ? ` — ${payload.company}` : "";
+  return `[Website] Quote from ${payload.name}${companyPart}`;
+}
+
 export async function sendContactEmail(payload: ContactPayload) {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   if (!apiKey) {
@@ -99,10 +119,10 @@ export async function sendContactEmail(payload: ContactPayload) {
   const to = getContactRecipient();
 
   const { error: enquiryError } = await resend.emails.send({
-    from: buildEnquiryFrom(payload),
+    from: buildEnquiryFrom(),
     to: [to],
-    replyTo: payload.email || undefined,
-    subject: `[Website] Quote from ${payload.name}${payload.company ? ` — ${payload.company}` : ""}`,
+    replyTo: payload.email || getContactRecipient(),
+    subject: buildSubject(payload),
     text: buildEnquiryText(payload),
     html: buildEnquiryHtml(payload),
   });

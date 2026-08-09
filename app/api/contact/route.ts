@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { isContactEmailConfigured, sendContactEmail } from "@/lib/email/contact";
+import {
+  isContactEmailConfigured,
+  mapResendError,
+  sendContactEmail,
+} from "@/lib/email/contact";
 
 type ContactBody = {
   name?: string;
@@ -57,9 +61,10 @@ export async function POST(request: Request) {
     await sendContactEmail({ name, phone, email: email || undefined, company: company || undefined, message });
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("[contact]", error);
+    const detail = error instanceof Error ? error.message : "Unknown error";
+    console.error("[contact]", detail);
     return NextResponse.json(
-      { error: "Could not send your message. Please call or WhatsApp us directly." },
+      { error: mapResendError(detail) },
       { status: 500 },
     );
   }
