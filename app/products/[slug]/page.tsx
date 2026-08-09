@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBanner } from "@/components/CtaBanner";
 import { ProductGrid } from "@/components/ProductGrid";
-import { getProduct, products } from "@/lib/data";
+import { RemoteImage } from "@/components/RemoteImage";
+import { getProductWithMedia, getProductsWithMedia } from "@/lib/cms/media";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductWithMedia(slug);
   if (!product) return { title: "Product" };
   return {
     title: product.title,
@@ -24,17 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductWithMedia(slug);
   if (!product) notFound();
 
-  const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
+  const allProducts = await getProductsWithMedia();
+  const related = allProducts.filter((p) => p.slug !== product.slug).slice(0, 4);
 
   return (
     <>
       <section className="bg-bg pt-[6.5rem] sm:pt-[7.5rem] md:pt-[8.5rem]">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:gap-10 sm:px-5 sm:py-14 md:grid-cols-2 md:gap-14 md:px-8 md:py-20">
           <div className="page-enter relative aspect-[16/11] sm:aspect-[4/3]">
-            <Image
+            <RemoteImage
               src={product.image}
               alt={product.title}
               fill
@@ -88,23 +87,29 @@ export default async function ProductDetailPage({ params }: Props) {
           <h2 className="reveal display text-2xl font-extrabold text-navy sm:text-3xl md:text-4xl">
             Gallery
           </h2>
-          <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2">
-            {product.gallery.map((src, i) => (
-              <div
-                key={`${src}-${i}`}
-                className="relative aspect-[16/10] overflow-hidden bg-bg"
-              >
-                <Image
-                  src={src}
-                  alt={`${product.title} reference ${i + 1}`}
-                  fill
-                  className="object-contain p-4"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={75}
-                />
-              </div>
-            ))}
-          </div>
+          {product.galleryItems.length === 0 ? (
+            <p className="mt-6 text-sm text-muted">
+              Photos for this product can be added from the admin panel.
+            </p>
+          ) : (
+            <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2">
+              {product.galleryItems.map((item, i) => (
+                <div
+                  key={item.id ?? `${item.src}-${i}`}
+                  className="relative aspect-[16/10] overflow-hidden bg-bg"
+                >
+                  <RemoteImage
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-contain p-4"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={75}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

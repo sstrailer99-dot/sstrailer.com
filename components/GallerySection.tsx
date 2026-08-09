@@ -1,16 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-
-type Photo = {
-  src: string;
-  alt: string;
-};
+import { RemoteImage } from "@/components/RemoteImage";
+import type { GalleryPhoto } from "@/lib/cms/types";
 
 type GallerySectionProps = {
   title: string;
-  photos: Photo[];
+  photos: GalleryPhoto[];
   showHeading?: boolean;
   previewCount?: number;
 };
@@ -25,6 +21,13 @@ export function GallerySection({
   const hasMore = photos.length > previewCount;
   const visible = expanded || !hasMore ? photos : photos.slice(0, previewCount);
 
+  const imageCount = photos.filter((photo) => photo.mediaType !== "video").length;
+  const videoCount = photos.filter((photo) => photo.mediaType === "video").length;
+  const countLabel =
+    videoCount > 0
+      ? `${photos.length} items (${imageCount} photos, ${videoCount} videos)`
+      : `${photos.length} ${photos.length === 1 ? "photo" : "photos"}`;
+
   return (
     <div>
       {showHeading && (
@@ -33,26 +36,35 @@ export function GallerySection({
             {title}
           </h2>
           <span className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-muted">
-            {photos.length} {photos.length === 1 ? "photo" : "photos"}
+            {countLabel}
           </span>
         </div>
       )}
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-        {visible.map((photo) => (
+        {visible.map((photo, index) => (
           <figure
-            key={photo.src}
+            key={photo.id ?? `${photo.src}-${index}`}
             className="group relative aspect-[4/3] overflow-hidden bg-[#f3f3f3]"
           >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              quality={80}
-              loading="lazy"
-            />
+            {photo.mediaType === "video" && photo.embedUrl ? (
+              <iframe
+                src={photo.embedUrl}
+                title={photo.alt}
+                className="h-full w-full border-0"
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+              />
+            ) : (
+              <RemoteImage
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={80}
+              />
+            )}
           </figure>
         ))}
       </div>

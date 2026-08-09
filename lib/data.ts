@@ -90,6 +90,9 @@ export const products: Product[] = [
       "/gallery/flat-bed-trailer/flatbed-26.png",
       "/gallery/flat-bed-trailer/flatbed-27.png",
       "/gallery/flat-bed-trailer/flatbed-28.png",
+      "/gallery/flat-bed-trailer/flatbed-29.png",
+      "/gallery/flat-bed-trailer/flatbed-30.png",
+      "/gallery/flat-bed-trailer/flatbed-31.png",
     ],
   },
   {
@@ -306,6 +309,45 @@ export const products: Product[] = [
       "/products/a-frame-trailer-photo.png",
     ],
   },
+  {
+    slug: "tipper-truck",
+    title: "Tipper Truck",
+    short: "Tipper / dump trailers and bodies for bulk material haulage.",
+    desc: "Tipper trucks and dump bodies manufactured by SS Trailers in Dubai for sand, aggregates and bulk site materials. Reinforced steel bodies, hydraulic tipping systems and durable finishing for UAE construction and haulage fleets.",
+    capacity: "Tipper / bulk haulage",
+    features: [
+      "Hydraulic tipping system",
+      "Reinforced dump body",
+      "Multi-axle chassis options",
+      "Built for sand & aggregates",
+    ],
+    image: "/products/tipper-truck-thumb.png",
+    gallery: [
+      "/products/tipper-truck-thumb.png",
+      "/gallery/tipper-truck/tipper-02.png",
+      "/gallery/tipper-truck/tipper-03.png",
+      "/gallery/tipper-truck/tipper-04.png",
+      "/gallery/tipper-truck/tipper-01.png",
+    ],
+  },
+  {
+    slug: "waste-water-tanker",
+    title: "Waste Water Tanker",
+    short: "Waste water tankers for municipal and industrial liquid transfer.",
+    desc: "Waste water tankers manufactured by SS Trailers in Dubai for municipal, industrial and site liquid transfer operations. Cylindrical tank bodies with rear access, discharge valves and durable finishing for UAE fleet duty.",
+    capacity: "Waste water / liquid transfer",
+    features: [
+      "Cylindrical tank fabrication",
+      "Rear ladder & discharge valve",
+      "Heavy-duty tank mounting",
+      "Built for municipal & industrial use",
+    ],
+    image: "/products/waste-water-tanker-thumb.png",
+    gallery: [
+      "/products/waste-water-tanker-thumb.png",
+      "/gallery/waste-water-tanker/waste-water-01.png",
+    ],
+  },
 ];
 
 export const industries: Industry[] = [
@@ -331,7 +373,7 @@ export const industries: Industry[] = [
       "Sand Trailer",
       "Three Axles Block Heavy Duty Trailer",
       "Lowbed Heavy Duty Trailer",
-      "Flatbed Trailer",
+      "Tipper Truck",
     ],
     image: "/images/construction.jpg",
   },
@@ -340,7 +382,7 @@ export const industries: Industry[] = [
     title: "Oil & Gas",
     short: "Tankers and specialised heavy trailer fabrication.",
     desc: "Oil and fuel operators need reliable tankers and heavy platforms. We manufacture tank trailers and robust multi-axle builds for industrial fleets.",
-    solutions: ["Diesel Tanker", "Three Axles Block Heavy Duty Trailer", "Extendable Trailer"],
+    solutions: ["Diesel Tanker", "Waste Water Tanker", "Three Axles Block Heavy Duty Trailer", "Extendable Trailer"],
     image: "/products/diesel-tanker.png",
   },
   {
@@ -353,6 +395,7 @@ export const industries: Industry[] = [
       "Three Axles Block Heavy Duty Trailer",
       "Flatbed Trailer",
       "Sand Trailer",
+      "Waste Water Tanker",
     ],
     image: "/products/box-trailer-thumb.png",
   },
@@ -443,6 +486,8 @@ export const productTypes = [
   { label: "Three Axles Block Heavy Duty Trailer", href: "/products?type=block-heavy-duty", slugs: ["three-axles-block-heavy-duty-trailer"] },
   { label: "Sand Trailer", href: "/products?type=sand", slugs: ["sand-trailers"] },
   { label: "A-Frame Trailer", href: "/products?type=a-frame", slugs: ["a-frame-trailer"] },
+  { label: "Tipper Truck", href: "/products?type=tipper", slugs: ["tipper-truck"] },
+  { label: "Waste Water Tanker", href: "/products?type=waste-water", slugs: ["waste-water-tanker"] },
 ] as const;
 
 export function getProductsByType(type: string) {
@@ -509,7 +554,7 @@ export const company = {
     story:
       "With more than a decade of hands-on experience in steel fabrication and heavy transport equipment, our team combines practical engineering with disciplined workshop standards. Every build — from flatbeds and curtain sides to tankers, low beds and specialised chassis — is planned around capacity, durability and ease of maintenance so fleets stay productive longer.",
     range:
-      "Our manufacturing range includes flatbed, heavy duty, sand, A-frame, extendable, low bed, box, side curtain, connector, skeleton and tanker trailers. Units can be specified with reinforced beams, safety lighting, reflective markings and finishes suited to UAE and GCC regulations.",
+      "Our manufacturing range includes flatbed, heavy duty, sand, A-frame, extendable, low bed, box, side curtain, connector, skeleton, tanker, tipper and waste water tanker trailers. Units can be specified with reinforced beams, safety lighting, reflective markings and finishes suited to UAE and GCC regulations.",
     commitment:
       "We work closely with fleet owners, logistics companies and contractors from enquiry through quotation, fabrication and delivery. Clear communication, honest timelines and consistent build quality are how we earn long-term trust — Strength That Moves Your Business.",
   },
@@ -525,15 +570,15 @@ export const company = {
   ],
   phone: "+971 54 512 9979",
   phoneHref: "tel:+971545129979",
-  email: "info@sstrailers.ae",
-  emailHref: "mailto:info@sstrailers.ae",
+  email: "info@sstrailers.net",
+  emailHref: "mailto:info@sstrailers.net",
   whatsapp: "https://wa.me/971545129979",
   address:
     "Office 43-44, Near Al Town Roundabout, Industrial Area 2, Ras Al Khor, Dubai, UAE",
   established: "2024",
   stats: {
-    happyClients: "5000+",
-    projectsCompleted: "6000+",
+    happyClients: "1200+",
+    projectsCompleted: "650+",
     yearsExperience: "10+",
   },
   founder: {

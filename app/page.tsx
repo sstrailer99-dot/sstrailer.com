@@ -1,12 +1,30 @@
 import Link from "next/link";
+import { CatalogMarquee } from "@/components/CatalogMarquee";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Hero } from "@/components/Hero";
-import { IndustryGrid } from "@/components/IndustryGrid";
-import { ProductGrid } from "@/components/ProductGrid";
 import { Stats } from "@/components/Stats";
-import { company } from "@/lib/data";
+import { getProductsWithMedia } from "@/lib/cms/media";
+import { company, industries } from "@/lib/data";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const products = await getProductsWithMedia();
+
+  const productItems = products.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    image: p.image,
+    href: `/products/${p.slug}`,
+  }));
+
+  const industryItems = industries.map((i) => ({
+    slug: i.slug,
+    title: i.title,
+    image: i.image,
+    href: `/industries/${i.slug}`,
+  }));
+
   return (
     <>
       <Hero />
@@ -45,7 +63,7 @@ export default function HomePage() {
               UAE Trailer Range
             </h2>
           </div>
-          <ProductGrid limit={4} columns={4} />
+          <CatalogMarquee items={productItems} imageFit="contain" duration={45} />
           <div className="reveal mt-14 text-center">
             <Link
               href="/products"
@@ -69,7 +87,11 @@ export default function HomePage() {
               Sectors We Serve
             </h2>
           </div>
-          <IndustryGrid limit={3} />
+          <CatalogMarquee
+            items={industryItems}
+            imageFit="cover"
+            duration={35}
+          />
         </div>
       </section>
 

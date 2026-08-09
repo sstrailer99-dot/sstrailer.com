@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { RemoteImage } from "@/components/RemoteImage";
 import { products, type Product } from "@/lib/data";
 
 type ProductGridProps = {
@@ -28,7 +28,7 @@ export function ProductGrid({
           className="catalog-tile group flex flex-col items-center text-center"
         >
           <div className="relative mb-6 aspect-[5/3] w-full max-w-[320px] overflow-visible sm:mb-7 sm:max-w-none">
-            <Image
+            <RemoteImage
               src={product.image}
               alt={product.title}
               fill

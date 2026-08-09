@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaBanner } from "@/components/CtaBanner";
 import { GallerySection } from "@/components/GallerySection";
-import { galleryCategories, getGalleryCategories } from "@/lib/data";
+import { getGalleryCategoriesMerged } from "@/lib/cms/media";
+import { getProductCategories } from "@/lib/cms/products";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -10,14 +11,19 @@ export const metadata: Metadata = {
     "SS Trailers photo gallery — trailer builds by category, manufactured in Ras Al Khor, Dubai.",
 };
 
+export const dynamic = "force-dynamic";
+
 type GalleryPageProps = {
   searchParams: Promise<{ category?: string }>;
 };
 
 export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const { category } = await searchParams;
-  const sections = getGalleryCategories(category);
-  const active = galleryCategories.find((c) => c.slug === category);
+  const [sections, filterCategories] = await Promise.all([
+    getGalleryCategoriesMerged(category),
+    getProductCategories(),
+  ]);
+  const active = filterCategories.find((c) => c.slug === category);
 
   return (
     <>
@@ -43,7 +49,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
             >
               All
             </Link>
-            {galleryCategories.map((item) => (
+            {filterCategories.map((item) => (
               <Link
                 key={item.slug}
                 href={`/gallery?category=${item.slug}`}

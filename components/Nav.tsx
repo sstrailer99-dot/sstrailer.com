@@ -73,16 +73,18 @@ export function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div
-        className={`hidden text-white transition-all duration-300 md:block ${
-          overHero ? "bg-transparent" : "bg-navy-deep"
-        }`}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-1.5 text-[0.7rem] tracking-wide">
-          <p className="truncate text-white/70">
+      <div className="hidden bg-navy-deep text-white transition-all duration-300 md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-8 py-2 text-sm tracking-wide">
+          <p className="truncate text-white/80">
             {company.address.split(",").slice(0, 2).join(",")}
           </p>
-          <div className="flex shrink-0 items-center gap-5">
+          <div className="flex shrink-0 flex-wrap items-center justify-end gap-x-5 gap-y-1">
+            <a
+              href={company.emailHref}
+              className="font-semibold text-white/90 transition-colors hover:text-accent-hot"
+            >
+              {company.email}
+            </a>
             <a
               href={company.phoneHref}
               className="font-semibold text-white/90 transition-colors hover:text-accent-hot"
@@ -102,10 +104,10 @@ export function Nav() {
       </div>
 
       <div
-        className={`relative transition-[background-color,box-shadow,border-color] duration-300 ${
+        className={`relative border-b transition-[background-color,box-shadow,border-color] duration-300 ${
           solid
-            ? "border-b border-line/70 bg-bg-white/95"
-            : "nav-over-hero border-b border-transparent bg-transparent"
+            ? "border-line/70 bg-bg-white/95"
+            : "nav-over-hero border-white/10 bg-navy-deep/90"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5 md:px-8 md:py-3">
@@ -114,11 +116,7 @@ export function Nav() {
             className="group flex min-w-0 flex-1 items-center"
             aria-label={`${company.shortName} — ${company.slogan}`}
           >
-            <span
-              className={`inline-flex w-fit max-w-[9.5rem] flex-col items-center px-2 py-1 sm:max-w-[13rem] md:max-w-[15rem] ${
-                overHero ? "bg-white/95" : ""
-              }`}
-            >
+            <span className="inline-flex w-fit max-w-[9.5rem] flex-col items-center sm:max-w-[13rem] md:max-w-[15rem]">
               <Image
                 src={company.logo}
                 alt={`${company.shortName} logo`}
@@ -127,7 +125,11 @@ export function Nav() {
                 priority
                 className="h-8 w-auto object-contain sm:h-9 md:h-10"
               />
-              <span className="mt-0.5 w-full text-center text-[0.55rem] font-semibold leading-tight tracking-[0.02em] text-muted sm:text-[0.58rem]">
+              <span
+                className={`mt-0.5 w-full text-center text-[0.55rem] font-semibold leading-tight tracking-[0.02em] sm:text-[0.58rem] ${
+                  overHero ? "text-white/80" : "text-muted"
+                }`}
+              >
                 {company.slogan}
               </span>
             </span>
