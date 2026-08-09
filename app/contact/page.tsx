@@ -16,7 +16,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact Us"
         title="Request a quote"
-        subtitle="Tell us about your trailer, tanker or body-building requirement. We respond via WhatsApp and phone."
+        subtitle="Tell us about your trailer, tanker or body-building requirement. Enquiries are sent to info@sstrailers.net."
         image="/images/warehouse.jpg"
         ctaHref="tel:+971545129979"
         ctaLabel="Call +971 54 512 9979"
