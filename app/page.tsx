@@ -67,7 +67,7 @@ export default async function HomePage() {
           <div className="reveal mt-14 text-center">
             <Link
               href="/products"
-              className="catalog-btn inline-flex min-h-[42px] items-center justify-center px-8 text-[0.95rem] font-medium text-[#1a1a1a] transition-colors hover:bg-navy hover:text-white"
+              className="catalog-btn inline-flex min-h-11 items-center justify-center px-8 text-[0.95rem] font-medium text-[#1a1a1a] transition-colors hover:bg-navy hover:text-white"
             >
               View Products
             </Link>

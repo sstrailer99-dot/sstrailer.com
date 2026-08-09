@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import { Certificates } from "@/components/Certificates";
 import { CtaBanner } from "@/components/CtaBanner";
 import { company } from "@/lib/data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
+export const metadata = createPageMetadata({
+  title: "About SS Trailers Dubai",
   description: company.description,
-};
+  path: "/about",
+  keywords: ["about SS Trailers", "trailer company Dubai", "Ras Al Khor manufacturer"],
+});
 
 export default function AboutPage() {
   return (

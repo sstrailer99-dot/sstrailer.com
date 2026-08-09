@@ -24,7 +24,7 @@ export function IndustryGrid({ limit, items = industries }: IndustryGridProps) {
           <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden">
             <Image
               src={item.image}
-              alt={item.title}
+              alt={`${item.title} — SS Trailers industry sector Dubai`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

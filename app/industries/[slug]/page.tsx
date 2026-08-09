@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBanner } from "@/components/CtaBanner";
 import { ProductGrid } from "@/components/ProductGrid";
 import { getIndustry, industries, products } from "@/lib/data";
+import { createPageMetadata, industryKeywords } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -12,14 +12,17 @@ export async function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const industry = getIndustry(slug);
-  if (!industry) return { title: "Industry" };
-  return {
-    title: industry.title,
+  if (!industry) return createPageMetadata({ title: "Industry", description: "SS Trailers industry solutions.", path: `/industries/${slug}` });
+  return createPageMetadata({
+    title: `${industry.title} Trailers Dubai`,
     description: industry.short,
-  };
+    path: `/industries/${slug}`,
+    keywords: industryKeywords(industry.title),
+    ogImage: industry.image,
+  });
 }
 
 export default async function IndustryDetailPage({ params }: Props) {
@@ -37,7 +40,7 @@ export default async function IndustryDetailPage({ params }: Props) {
         <div className="absolute inset-0">
           <Image
             src={industry.image}
-            alt={industry.title}
+            alt={`${industry.title} — SS Trailers industry solutions Dubai`}
             fill
             priority
             className="anim-ken object-cover"

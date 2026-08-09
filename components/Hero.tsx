@@ -102,12 +102,16 @@ export function Hero() {
               type="button"
               aria-label={`Go to banner ${index + 1}`}
               onClick={() => setActive(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === active
-                  ? "w-8 bg-accent-hot"
-                  : "w-3 bg-white/40 hover:bg-white/70"
-              }`}
-            />
+              className="inline-flex min-h-11 min-w-11 items-center justify-center p-2"
+            >
+              <span
+                className={`block rounded-full transition-all duration-300 ${
+                  index === active
+                    ? "h-1.5 w-8 bg-accent-hot"
+                    : "h-1.5 w-3 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

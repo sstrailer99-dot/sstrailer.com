@@ -30,7 +30,7 @@ export function ProductGrid({
           <div className="relative mb-6 aspect-[5/3] w-full max-w-[320px] overflow-visible sm:mb-7 sm:max-w-none">
             <RemoteImage
               src={product.image}
-              alt={product.title}
+              alt={`${product.title} — SS Trailers product thumbnail`}
               fill
               className="catalog-img object-contain object-center"
               sizes="(max-width: 640px) 85vw, (max-width: 1024px) 40vw, 22vw"

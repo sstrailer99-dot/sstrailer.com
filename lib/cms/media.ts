@@ -39,7 +39,7 @@ function cmsItemToGalleryPhoto(item: MediaItem, title: string): GalleryPhoto {
   return {
     id: item.id,
     src: item.url,
-    alt: item.alt ?? `${title} media`,
+    alt: item.alt?.trim() || `${title} — photo`,
     mediaType: item.media_type,
     embedUrl: item.media_type === "video" ? item.url : undefined,
   };

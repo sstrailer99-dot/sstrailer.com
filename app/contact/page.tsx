@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata = createPageMetadata({
+  title: "Contact SS Trailers Dubai",
   description:
-    "Request a quote from Shahid Mehmood Salamat Auto General Repairing Co LLC. Call +971 54 512 9979 — Ras Al Khor, Dubai.",
-};
+    "Request a trailer quote from SS Trailers. Call +971 54 512 9979, email info@sstrailers.net — Ras Al Khor Industrial Area, Dubai, UAE.",
+  path: "/contact",
+  keywords: ["contact SS Trailers", "trailer quote Dubai", "trailer manufacturer contact UAE"],
+});
 
 export default function ContactPage() {
   return (

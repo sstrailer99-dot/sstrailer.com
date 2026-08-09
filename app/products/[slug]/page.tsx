@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBanner } from "@/components/CtaBanner";
+import { ProductJsonLd } from "@/components/JsonLd";
 import { ProductGrid } from "@/components/ProductGrid";
 import { RemoteImage } from "@/components/RemoteImage";
 import { getProductWithMedia, getProductsWithMedia } from "@/lib/cms/media";
+import { createPageMetadata, productKeywords, SITE_URL } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const product = await getProductWithMedia(slug);
-  if (!product) return { title: "Product" };
-  return {
-    title: product.title,
+  if (!product) return createPageMetadata({ title: "Product", description: "SS Trailers product.", path: `/products/${slug}` });
+  return createPageMetadata({
+    title: `${product.title} Dubai UAE`,
     description: product.short,
-  };
+    path: `/products/${slug}`,
+    keywords: productKeywords(product.title, product.capacity),
+    ogImage: product.image,
+  });
 }
 
 export default async function ProductDetailPage({ params }: Props) {
@@ -30,12 +34,18 @@ export default async function ProductDetailPage({ params }: Props) {
 
   return (
     <>
+      <ProductJsonLd
+        name={product.title}
+        description={product.desc}
+        image={product.image}
+        url={`${SITE_URL}/products/${product.slug}`}
+      />
       <section className="bg-bg pt-[6.5rem] sm:pt-[7.5rem] md:pt-[8.5rem]">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:gap-10 sm:px-5 sm:py-14 md:grid-cols-2 md:gap-14 md:px-8 md:py-20">
           <div className="page-enter relative aspect-[16/11] sm:aspect-[4/3]">
             <RemoteImage
               src={product.image}
-              alt={product.title}
+              alt={`${product.title} — ${product.capacity} trailer manufactured by SS Trailers Dubai`}
               fill
               priority
               className="object-contain p-2"
@@ -100,7 +110,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 >
                   <RemoteImage
                     src={item.src}
-                    alt={item.alt}
+                    alt={item.alt || `${product.title} gallery photo ${i + 1}`}
                     fill
                     className="object-contain p-4"
                     sizes="(max-width: 768px) 100vw, 50vw"

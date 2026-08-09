@@ -101,7 +101,7 @@ export function ProductsMegaMenu({
             >
               <Image
                 src={product?.image ?? "/images/trailer-flatbed.jpg"}
-                alt={featured.title}
+                alt={`${featured.title} — featured SS Trailers product`}
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1280px) 50vw, 640px"

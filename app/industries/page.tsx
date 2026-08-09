@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import { CtaBanner } from "@/components/CtaBanner";
 import { IndustryGrid } from "@/components/IndustryGrid";
 import { PageHero } from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries",
+export const metadata = createPageMetadata({
+  title: "Industries We Serve — Trailer Solutions UAE",
   description:
-    "Trailer and truck body solutions for transport & logistics, construction, oil & gas, municipality & waste management, process & storage, and special equipment.",
-};
+    "SS Trailers serves transport & logistics, construction, oil & gas, municipality, process & storage, and special equipment sectors across Dubai and the GCC.",
+  path: "/industries",
+  keywords: ["industrial trailers UAE", "construction trailer Dubai", "logistics trailer supplier"],
+});
 
 export default function IndustriesPage() {
   return (

@@ -63,7 +63,7 @@ export function Certificates() {
               <div className="relative aspect-[3/4] overflow-hidden bg-sky">
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} — SS Trailers certification ${item.subtitle}`}
                   fill
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -120,7 +120,7 @@ export function Certificates() {
               <div className="relative mx-auto aspect-[3/4] w-full max-w-xl">
                 <Image
                   src={cert.image}
-                  alt={cert.title}
+                  alt={`${cert.title} — SS Trailers certification document`}
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 640px"

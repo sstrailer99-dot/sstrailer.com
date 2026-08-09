@@ -6,6 +6,7 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   image: string;
+  imageAlt?: string;
   ctaHref?: string;
   ctaLabel?: string;
 };
@@ -15,6 +16,7 @@ export function PageHero({
   title,
   subtitle,
   image,
+  imageAlt,
   ctaHref = "/contact",
   ctaLabel = "Get a Quote",
 }: PageHeroProps) {
@@ -28,7 +30,7 @@ export function PageHero({
       <div className="absolute inset-0">
         <Image
           src={image}
-          alt=""
+          alt={imageAlt ?? `${title} — SS Trailers Dubai`}
           fill
           priority
           fetchPriority="high"

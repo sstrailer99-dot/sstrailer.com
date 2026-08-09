@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaBanner } from "@/components/CtaBanner";
 import { GallerySection } from "@/components/GallerySection";
 import { getGalleryCategoriesMerged } from "@/lib/cms/media";
 import { getProductCategories } from "@/lib/cms/products";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Gallery",
+export const metadata = createPageMetadata({
+  title: "Trailer Photo Gallery Dubai",
   description:
-    "SS Trailers photo gallery — trailer builds by category, manufactured in Ras Al Khor, Dubai.",
-};
+    "SS Trailers photo gallery — flatbed, tanker, tipper, sand and heavy-duty trailer builds by category, manufactured in Ras Al Khor, Dubai.",
+  path: "/gallery",
+  keywords: ["trailer gallery Dubai", "trailer photos UAE", "SS Trailers builds"],
+});
 
 export const dynamic = "force-dynamic";
 

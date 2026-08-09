@@ -44,7 +44,7 @@ export function CatalogMarquee({
             >
               <RemoteImage
                 src={item.image}
-                alt={item.title}
+                alt={`${item.title} — SS Trailers ${item.href.includes("industries") ? "industry" : "product"}`}
                 fill
                 className={
                   imageFit === "cover"

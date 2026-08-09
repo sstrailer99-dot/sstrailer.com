@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
 import { Process } from "@/components/Process";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Process",
+export const metadata = createPageMetadata({
+  title: "Our Manufacturing Process",
   description:
-    "From inquiry to quotation and manufacture — how SMS Auto builds trailers and truck bodies in Dubai.",
-};
+    "From inquiry to quotation, CNC fabrication and delivery — how SS Trailers builds custom trailers and truck bodies in Ras Al Khor, Dubai.",
+  path: "/process",
+  keywords: ["trailer manufacturing process", "CNC trailer fabrication Dubai"],
+});
 
 export default function ProcessPage() {
   return (
@@ -27,7 +29,7 @@ export default function ProcessPage() {
           <div className="reveal-image relative aspect-[16/11] overflow-hidden">
             <Image
               src="/images/manufacturing.jpg"
-              alt="CNC fabrication process"
+              alt="SS Trailers CNC trailer fabrication workshop in Ras Al Khor Dubai"
               fill
               className="object-cover"
               sizes="50vw"
