@@ -60,7 +60,7 @@ export default async function HomePage() {
               Best Selling
             </p>
             <h2 className="reveal reveal-delay-1 display mt-3 text-4xl font-extrabold text-navy md:text-5xl">
-              UAE Trailer Range
+              Our Trailer Range
             </h2>
           </div>
           <CatalogMarquee items={productItems} imageFit="contain" duration={45} />
