@@ -80,11 +80,42 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-white/40 md:flex-row md:items-center md:justify-between md:px-8">
-          <p>
-            © {new Date().getFullYear()} {company.name}
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-xs text-white/40 md:px-8">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p>
+              © {new Date().getFullYear()} {company.name}
+            </p>
+            <p>Established {company.established} · Dubai, UAE</p>
+          </div>
+          <p className="text-center text-white/35">
+            Website designed and developed by{" "}
+            <a
+              href="https://thedigitalmagnet.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link text-white/50 hover:text-white"
+            >
+              Magnet Digital LLC
+            </a>
+            {" · "}
+            <a
+              href="https://thedigitalmagnet.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link hover:text-white"
+            >
+              thedigitalmagnet.com
+            </a>
+            {" · "}
+            <a
+              href="https://hussainiitservices.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link hover:text-white"
+            >
+              hussainiitservices.com
+            </a>
           </p>
-          <p>Established {company.established} · Dubai, UAE</p>
         </div>
       </div>
     </footer>
