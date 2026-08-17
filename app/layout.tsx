@@ -6,10 +6,10 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { Nav } from "@/components/Nav";
-import { RevealObserver } from "@/components/RevealObserver";
 import { company } from "@/lib/data";
 import { createPageMetadata, SITE_URL } from "@/lib/seo";
 import "./globals.css";
+
 const display = Barlow_Condensed({
   weight: ["700", "800"],
   variable: "--font-display",
@@ -65,7 +65,6 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col pb-16 antialiased md:pb-0">
         <GoogleAnalytics />
         <OrganizationJsonLd />
-        <RevealObserver />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

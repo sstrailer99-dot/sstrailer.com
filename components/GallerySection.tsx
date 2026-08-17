@@ -45,13 +45,13 @@ export function GallerySection({
         {visible.map((photo, index) => (
           <figure
             key={photo.id ?? `${photo.src}-${index}`}
-            className="group relative aspect-[4/3] overflow-hidden bg-[#f3f3f3]"
+            className="gallery-frame group relative aspect-[4/3] overflow-hidden"
           >
             {photo.mediaType === "video" && photo.embedUrl ? (
               <iframe
                 src={photo.embedUrl}
                 title={photo.alt}
-                className="h-full w-full border-0"
+                className="h-full w-full border-0 bg-white"
                 allow="autoplay; encrypted-media; fullscreen"
                 allowFullScreen
               />
@@ -60,7 +60,7 @@ export function GallerySection({
                 src={photo.src}
                 alt={photo.alt || `${title} — photo ${index + 1}`}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="gallery-frame-img"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 quality={80}
               />

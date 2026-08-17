@@ -92,7 +92,7 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-bg py-12 sm:py-16 md:py-20">
+      <section className="bg-bg-white py-12 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
           <h2 className="reveal display text-2xl font-extrabold text-navy sm:text-3xl md:text-4xl">
             Gallery
@@ -106,13 +106,13 @@ export default async function ProductDetailPage({ params }: Props) {
               {product.galleryItems.map((item, i) => (
                 <div
                   key={item.id ?? `${item.src}-${i}`}
-                  className="relative aspect-[16/10] overflow-hidden bg-bg"
+                  className="gallery-frame relative aspect-[16/10] overflow-hidden"
                 >
                   <RemoteImage
                     src={item.src}
                     alt={item.alt || `${product.title} gallery photo ${i + 1}`}
                     fill
-                    className="object-contain p-4"
+                    className="gallery-frame-img"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={75}
                   />

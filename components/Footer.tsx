@@ -106,15 +106,6 @@ export function Footer() {
             >
               thedigitalmagnet.com
             </a>
-            {" · "}
-            <a
-              href="https://hussainiitservices.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link hover:text-white"
-            >
-              hussainiitservices.com
-            </a>
           </p>
         </div>
       </div>

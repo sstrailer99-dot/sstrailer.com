@@ -156,14 +156,10 @@ export const products: Product[] = [
     ],
     image: "/products/diesel-tanker-thumb-v2.png",
     gallery: [
-      "/products/diesel-tanker-thumb-v2.png",
       "/gallery/diesel-tanker/tanker-01.png",
       "/gallery/diesel-tanker/tanker-02.png",
       "/gallery/diesel-tanker/tanker-03.png",
       "/gallery/diesel-tanker/tanker-04.png",
-      "/gallery/diesel-tanker/tanker-05.png",
-      "/products/diesel-tanker.png",
-      "/products/tanker-photo.png",
     ],
   },
   {
@@ -180,15 +176,12 @@ export const products: Product[] = [
     ],
     image: "/products/curtain-trailer-thumb.png",
     gallery: [
-      "/products/curtain-trailer-thumb.png",
       "/gallery/curtain-trailer/curtain-01.png",
       "/gallery/curtain-trailer/curtain-02.png",
       "/gallery/curtain-trailer/curtain-03.png",
       "/gallery/curtain-trailer/curtain-04.png",
       "/gallery/curtain-trailer/curtain-05.png",
       "/gallery/curtain-trailer/curtain-06.png",
-      "/products/side-curtain-trailer-photo.png",
-      "/products/side-curtain-trailer.png",
     ],
   },
   {

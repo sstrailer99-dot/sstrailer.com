@@ -45,6 +45,22 @@ function rowToProduct(row: CmsProductRow): Product {
   };
 }
 
+function mergeStaticWithCms(staticProduct: Product, cmsRow: CmsProductRow): Product {
+  const cmsProduct = rowToProduct(cmsRow);
+
+  return {
+    ...staticProduct,
+    title: cmsProduct.title || staticProduct.title,
+    short: cmsProduct.short || staticProduct.short,
+    desc: cmsProduct.desc || staticProduct.desc,
+    capacity: cmsProduct.capacity || staticProduct.capacity,
+    features: cmsProduct.features.length ? cmsProduct.features : staticProduct.features,
+    // File-based thumbnails + gallery in lib/data.ts always win for static products
+    image: staticProduct.image,
+    gallery: staticProduct.gallery,
+  };
+}
+
 export async function fetchCmsProducts(includeInactive = false): Promise<CmsProductRow[]> {
   if (!isSupabaseConfigured()) return [];
 
@@ -73,11 +89,19 @@ export async function fetchCmsProducts(includeInactive = false): Promise<CmsProd
 
 export async function getAllProducts(): Promise<Product[]> {
   const cmsRows = await fetchCmsProducts();
-  const cmsSlugs = new Set(cmsRows.map((row) => row.slug));
-  const cmsProducts = cmsRows.map(rowToProduct);
+  const cmsBySlug = new Map(cmsRows.map((row) => [row.slug, row]));
+  const staticSlugs = new Set(staticProducts.map((product) => product.slug));
 
-  const staticOnly = staticProducts.filter((product) => !cmsSlugs.has(product.slug));
-  return [...staticOnly, ...cmsProducts];
+  const mergedStatic = staticProducts.map((product) => {
+    const cmsRow = cmsBySlug.get(product.slug);
+    return cmsRow ? mergeStaticWithCms(product, cmsRow) : product;
+  });
+
+  const cmsOnly = cmsRows
+    .filter((row) => !staticSlugs.has(row.slug))
+    .map(rowToProduct);
+
+  return [...mergedStatic, ...cmsOnly];
 }
 
 export async function getProductCategories(): Promise<ProductCategory[]> {
@@ -102,11 +126,15 @@ export async function getProductCategories(): Promise<ProductCategory[]> {
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
+  const staticProduct = staticProducts.find((product) => product.slug === slug);
   const cmsRows = await fetchCmsProducts();
   const cmsMatch = cmsRows.find((row) => row.slug === slug);
+
+  if (staticProduct && cmsMatch) return mergeStaticWithCms(staticProduct, cmsMatch);
+  if (staticProduct) return staticProduct;
   if (cmsMatch) return rowToProduct(cmsMatch);
 
-  return staticProducts.find((product) => product.slug === slug) ?? null;
+  return null;
 }
 
 export async function getNextProductSortOrder() {
