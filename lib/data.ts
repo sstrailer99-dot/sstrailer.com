@@ -132,14 +132,11 @@ export const products: Product[] = [
     ],
     image: "/products/box-trailer-thumb.png",
     gallery: [
-      "/products/box-trailer-thumb.png",
       "/gallery/box-trailer/box-01.jpg",
       "/gallery/box-trailer/box-02.jpg",
       "/gallery/box-trailer/box-03.jpg",
       "/gallery/box-trailer/box-04.jpg",
       "/gallery/box-trailer/box-06.jpg",
-      "/products/box-trailer.png",
-      "/products/box-trailer-photo.png",
     ],
   },
   {
@@ -292,14 +289,11 @@ export const products: Product[] = [
     ],
     image: "/products/a-frame-trailer-thumb-v2.png",
     gallery: [
-      "/products/a-frame-trailer-thumb-v2.png",
       "/gallery/a-frame-trailer/aframe-01.png",
       "/gallery/a-frame-trailer/aframe-02.png",
       "/gallery/a-frame-trailer/aframe-03.png",
       "/gallery/a-frame-trailer/aframe-04.png",
       "/gallery/a-frame-trailer/aframe-05.png",
-      "/products/a-frame-trailer.png",
-      "/products/a-frame-trailer-photo.png",
     ],
   },
   {
