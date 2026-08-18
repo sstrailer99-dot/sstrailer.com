@@ -34,7 +34,6 @@ export const products: Product[] = [
     ],
     image: "/products/skeleton-trailer.png",
     gallery: [
-      "/products/skeleton-trailer.png",
       "/gallery/skeleton-trailer/skeleton-01.jpg",
       "/gallery/skeleton-trailer/skeleton-02.jpg",
       "/gallery/skeleton-trailer/skeleton-03.jpg",
@@ -44,7 +43,6 @@ export const products: Product[] = [
       "/gallery/skeleton-trailer/skeleton-07.jpg",
       "/gallery/skeleton-trailer/skeleton-08.jpg",
       "/gallery/skeleton-trailer/skeleton-09.jpg",
-      "/gallery/skeleton-trailer/skeleton-10.jpg",
     ],
   },
   {
@@ -61,10 +59,6 @@ export const products: Product[] = [
     ],
     image: "/products/flat-bed-trailer-thumb.png",
     gallery: [
-      "/products/flat-bed-trailer-thumb.png",
-      "/gallery/flat-bed-trailer/flatbed-01.jpg",
-      "/gallery/flat-bed-trailer/flatbed-02.jpg",
-      "/gallery/flat-bed-trailer/flatbed-03.jpg",
       "/gallery/flat-bed-trailer/flatbed-04.jpg",
       "/gallery/flat-bed-trailer/flatbed-05.jpg",
       "/gallery/flat-bed-trailer/flatbed-06.jpg",
@@ -75,7 +69,6 @@ export const products: Product[] = [
       "/gallery/flat-bed-trailer/flatbed-11.jpg",
       "/gallery/flat-bed-trailer/flatbed-12.jpg",
       "/gallery/flat-bed-trailer/flatbed-13.jpg",
-      "/gallery/flat-bed-trailer/flatbed-14.jpg",
       "/gallery/flat-bed-trailer/flatbed-15.jpg",
       "/gallery/flat-bed-trailer/flatbed-16.jpg",
       "/gallery/flat-bed-trailer/flatbed-17.jpg",
@@ -109,7 +102,6 @@ export const products: Product[] = [
     ],
     image: "/products/connector-trailer-thumb.png",
     gallery: [
-      "/products/connector-trailer-thumb.png",
       "/gallery/connector-trailer/connector-01.jpg",
       "/gallery/connector-trailer/connector-02.jpg",
       "/gallery/connector-trailer/connector-03.jpg",
@@ -195,11 +187,10 @@ export const products: Product[] = [
     ],
     image: "/products/extendable-trailer-thumb.png",
     gallery: [
-      "/products/extendable-trailer-thumb.png",
+      "/gallery/extendable-trailer/extendable-01.png",
       "/gallery/extendable-trailer/extendable-02.png",
       "/gallery/extendable-trailer/extendable-03.png",
-      "/products/extendable-trailer.png",
-      "/products/extendable-trailer-photo.png",
+      "/gallery/extendable-trailer/extendable-04.png",
     ],
   },
   {
@@ -216,15 +207,14 @@ export const products: Product[] = [
     ],
     image: "/products/low-bed-trailer-thumb-v2.png",
     gallery: [
-      "/products/low-bed-trailer-thumb-v2.png",
       "/gallery/low-bed-trailer/lowbed-01.png",
       "/gallery/low-bed-trailer/lowbed-02.png",
       "/gallery/low-bed-trailer/lowbed-03.png",
+      "/gallery/low-bed-trailer/lowbed-04.png",
       "/gallery/low-bed-trailer/lowbed-05.png",
       "/gallery/low-bed-trailer/lowbed-06.png",
       "/gallery/low-bed-trailer/lowbed-07.png",
       "/gallery/low-bed-trailer/lowbed-08.png",
-      "/products/low-bed-trailer-photo.png",
     ],
   },
   {
@@ -241,13 +231,11 @@ export const products: Product[] = [
     ],
     image: "/products/three-axles-block-heavy-duty-thumb.png",
     gallery: [
-      "/products/three-axles-block-heavy-duty-thumb.png",
       "/gallery/three-axles-block-heavy-duty/block-hd-01.png",
       "/gallery/three-axles-block-heavy-duty/block-hd-02.png",
       "/gallery/three-axles-block-heavy-duty/block-hd-03.png",
       "/gallery/three-axles-block-heavy-duty/block-hd-04.png",
       "/gallery/three-axles-block-heavy-duty/block-hd-05.png",
-      "/products/three-axles-block-heavy-duty-trailer.png",
     ],
   },
   {
@@ -264,15 +252,12 @@ export const products: Product[] = [
     ],
     image: "/products/sand-trailer-thumb-v3.png",
     gallery: [
-      "/products/sand-trailer-thumb-v3.png",
+      "/gallery/sand-trailer/sand-01.png",
       "/gallery/sand-trailer/sand-02.png",
       "/gallery/sand-trailer/sand-03.png",
       "/gallery/sand-trailer/sand-04.png",
       "/gallery/sand-trailer/sand-05.png",
       "/gallery/sand-trailer/sand-06.png",
-      "/gallery/sand-trailer/sand-07.png",
-      "/products/sand-trailers.png",
-      "/products/sand-trailer-photo.png",
     ],
   },
   {
@@ -297,6 +282,26 @@ export const products: Product[] = [
     ],
   },
   {
+    slug: "car-carrier",
+    title: "Car Carrier Trailer",
+    short: "Double-deck car carrier trailers for vehicle transport.",
+    desc: "Car carrier trailers manufactured by SS Trailers in Dubai for multi-vehicle transport. Double-deck steel frame design with grated decks, reinforced structure and practical loading layouts for UAE auto logistics fleets.",
+    capacity: "Car carrier · Multi-vehicle",
+    features: [
+      "Double-deck transport frame",
+      "Grated deck surfaces",
+      "Reinforced steel structure",
+      "Built for vehicle logistics",
+    ],
+    image: "/products/car-carrier-thumb.png",
+    gallery: [
+      "/gallery/car-carrier/carrier-01.png",
+      "/gallery/car-carrier/carrier-02.png",
+      "/gallery/car-carrier/carrier-03.png",
+      "/gallery/car-carrier/carrier-04.png",
+    ],
+  },
+  {
     slug: "tipper-truck",
     title: "Tipper Truck",
     short: "Tipper / dump trailers and bodies for bulk material haulage.",
@@ -310,11 +315,10 @@ export const products: Product[] = [
     ],
     image: "/products/tipper-truck-thumb.png",
     gallery: [
-      "/products/tipper-truck-thumb.png",
+      "/gallery/tipper-truck/tipper-01.png",
       "/gallery/tipper-truck/tipper-02.png",
       "/gallery/tipper-truck/tipper-03.png",
       "/gallery/tipper-truck/tipper-04.png",
-      "/gallery/tipper-truck/tipper-01.png",
     ],
   },
   {
@@ -331,8 +335,12 @@ export const products: Product[] = [
     ],
     image: "/products/waste-water-tanker-thumb.png",
     gallery: [
-      "/products/waste-water-tanker-thumb.png",
       "/gallery/waste-water-tanker/waste-water-01.png",
+      "/gallery/waste-water-tanker/waste-water-02.png",
+      "/gallery/waste-water-tanker/waste-water-03.png",
+      "/gallery/waste-water-tanker/waste-water-04.png",
+      "/gallery/waste-water-tanker/waste-water-05.png",
+      "/gallery/waste-water-tanker/waste-water-06.png",
     ],
   },
 ];
@@ -473,6 +481,7 @@ export const productTypes = [
   { label: "Three Axles Block Heavy Duty Trailer", href: "/products?type=block-heavy-duty", slugs: ["three-axles-block-heavy-duty-trailer"] },
   { label: "Sand Trailer", href: "/products?type=sand", slugs: ["sand-trailers"] },
   { label: "A-Frame Trailer", href: "/products?type=a-frame", slugs: ["a-frame-trailer"] },
+  { label: "Car Carrier Trailer", href: "/products?type=car-carrier", slugs: ["car-carrier"] },
   { label: "Tipper Truck", href: "/products?type=tipper", slugs: ["tipper-truck"] },
   { label: "Waste Water Tanker", href: "/products?type=waste-water", slugs: ["waste-water-tanker"] },
 ] as const;
